@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="events-left">
+        <div class="sidebar-form-div"> 
+            <div class="sidebar-option">New Event</div>
+            <form class="sidebar-form">
+                <label for="event-name">Name:</label>
+                <input type="text" id="event-name" name="event-name" required><br>
+                <label for="event-date">Event Date:</label>
+                <input type="date" id="event-date" name="event-date" required><br>
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required><br>
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" placeholder="Event Description" rows="4" cols="40" required> </textarea><br>
+                <input type="submit" id="submit-new-event" value="Create New Event" formmethod="post" formaction={{url_for('events.new_event')}}>
+            </form>
+        </div>
+
+
+        <div class="sidebar-form-div">
+            <div class="sidebar-option"> Delete Event</div>
+            <form class="sidebar-form">
+                <label for="event_id_deletion"> Select Event:</label>
+                <select name="event_id_deletion" id="event_id_deletion" required>
+                    <option value="" disabled selected>Select your option</option>
+                {% for event in events_list %}
+                    <option value="{{event['event_id']}}">{{event['event_id']}} . {{event['event_name']}}</option>
+                {% endfor %}
+                </select>
+
+                <button type="submit" name="delete_event" id="delete_event" formmethod="post" formaction={{url_for('events.delete_event')}}> Delete Event </button>
+            </form>
+        </div>
+
+    </div>
+
+
+
+    <div class="events-right">
+        <div class="right-title">All Events</div>
+        <div class="all-events-list">
+{% for event in events_list %}
+            <div class="event-card">
+                <div class="event-info-1">
+                    <div class="event-name">{{event['event_name']}}</div>
+                    <div class="event-id"><b>Event ID: </b> {{event['event_id']}}</div>
+                    <div class="event-date"><b>Date: </b> {{event['event_date'].replace("00:00:00 GMT","")}}</div>
+                    <div class="event-location"><b>Location: </b> {{event['location']}}</div>
+                </div>
+                <div class="event-info-2"><b>Description:<br></b>{{event['description']}}</div>
+            </div>
+{% endfor %}
+            
+       </div> 
+    </div>
+
+{% endblock content %}

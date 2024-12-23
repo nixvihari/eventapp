@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="tasks-left">
+        <div class="sidebar-form-div"> 
+            <div class="sidebar-option">New Task</div>
+            <form class="sidebar-form">
+                <label for="select-event-id">Select Event:</label>
+                <select name="select-event-id" id="select-event-id">
+                    <option value="" disabled selected>Select your option</option>
+                    {% for event in events_list_dict %}
+                    <option value="{{event['event_id']}}">{{event['event_id']}}. {{event['event_name']}}</option>
+                    {% endfor %}
+                </select>
+                <label for="task-name">Name: </label>
+                <input type="text" id="task-name" name="task-name" required>
+                <label for="task-deadline">Deadline: </label>
+                <input type="date" id="task-deadline" name="task-deadline" required>
+                <label for="task-status-selector" id="task-status-selector">Status</label>
+                <select name="task-status-selector" id="task-status-selector" required>
+                    <option value="" disabled selected>Select your option</option>
+                    <option value="0">Pending</option>
+                    <option value="1">Completed</option>
+                </select>
+                <button type="submit" formmethod="post" formaction={{url_for('tasks.new_task')}}>Create New Task</button>
+            </form>
+        </div>
+
+
+        <div class="sidebar-form-div">
+            <div class="sidebar-option"> Update Task Status</div>
+            <form class="sidebar-form">
+                <label for="update-task-selector"> Select Task: </label>
+                <select name="update-task-selector" id="update-task-selector" required>
+                    <option value="" disabled selected>Select your option</option>
+                {% for task_id, task_name in task_list %}
+                    <option value="{{task_id}}">{{task_id}}. {{task_name}}</option>
+                {% endfor %}
+                </select>
+                <label for="task-status-update-selector" id="task-status-update-selector">Update Status</label>
+                <select name="task-status-update-selector" id="task-status-update-selector" required>
+                    <option value="" disabled selected>Select your option</option>
+                    <option value="0">Pending</option>
+                    <option value="1">Completed</option>
+                </select> 
+                <button type="submit" name="update-task-status-submit" id="update-task-status-submit" formmethod="post" formaction={{url_for('tasks.update_task')}}> Update Task Status </button>
+            </form>
+        </div>
+
+    </div>
+
+
+
+    <div class="tasks-right">
+        <div class="right-title">Tasks</div>
+        <div class="events-tasks-pane">
+
+{% for event in events_list_dict %}
+<div class="event-tasks-card">
+        <div class="event-info-1">
+                <div class="event-name">{{event['event_name']}}</div>
+                <div class="tasks-event-id"><b>Event ID: {{event['event_id']}}</b></div>
+                <br>
+                    <div class="task-list-div">
+                        <div><b>Task ID</b></div> <div><b>Task Name</b></div>  <div><b>Status</b></div> <div><b>Deadline</b></div>
+                {% for task in tasks_dict[event['event_id']] %}
+                        <div class="task-id"> {{task['task_id']}} </div> <div>{{task['task_name']}}</div> <div>{{task['status_readable']}}</div> <div>{{task['deadline']}}</div>
+                {% endfor %}
+                    </div>
+                </div>
+            </div>
+{% endfor %}
+       </div> 
+    </div>
+
+
+
+
+
+{% endblock content %}

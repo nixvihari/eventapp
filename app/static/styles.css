@@ -1,0 +1,271 @@
+* {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.site-name {
+    display :flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 10px;
+    font-size: 2.25rem;
+    color: aliceblue;
+    background-color: rgb(0, 97, 183);
+}
+
+.navbar-ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.navbar-item {
+    float: left;
+}
+
+.navbar-item a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar a:hover{
+    background-color: rgb(0, 97, 183);
+}
+
+
+
+
+
+
+
+/* ------------------------------------------------------------ */
+/* events page */
+.container {
+    display: flex;
+    width: 100;
+    flex-wrap: wrap;
+}
+
+.events-left {
+    width: 25%;
+    background-color: #333;
+    min-height: 100vh;
+}
+
+.events-right {
+    width: 75%;
+    background-color: white;
+    min-height: 100vh;
+}
+
+/* universal right title */
+.right-title {
+    display: flex;
+    font-size: 2rem;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+
+/* ----------- */
+/* event card */
+
+.all-events-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+    place-items: center;
+    gap: 15px;
+}
+.event-card {
+    align-self: center;
+    display: flex;
+    padding: 20px;
+    justify-content:center;
+    align-items: center;
+    width: 70%;
+    color: black;
+    border-radius: 20px;
+    box-shadow:2px 4px 12px rgb(0, 97, 183,0.4);
+}
+
+.event-info-1 {
+    display: block;
+    justify-content: space-evenly; /*space evenely*/
+    align-items: center;
+    width: 100%;
+}
+
+/* .event-id-name-pair {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-right: 10%;
+} */
+
+.event-id {
+    display: flex;
+    padding: 5px;
+}
+
+.event-name {
+    display: flex;
+    font-size: 1.5rem;
+}
+
+.event-date {
+    display: flex;
+    padding:5px;
+}
+
+.event-location {
+    display: flex;
+    padding:5px;
+}
+.event-info-2 {
+    display: block;
+    margin-left: 4%;
+    padding: 10px;
+    width:100%;
+    font-size: 14px;
+    justify-content: center;
+}
+
+
+
+/* event sidebar */
+
+.sidebar-option {
+    display: flex;
+    margin-top: 0;
+    font-size: 1.5rem;
+    background-color: rgb(0, 97, 183);
+    color: white;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+}
+
+.sidebar-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 10px;
+}
+.sidebar-form-div label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #f1f1f1;
+    padding: 4px;
+}
+
+.sidebar-form-div input, select, button {
+    border-radius: 5px;
+    padding: 4px;
+}
+
+
+/* --------------------------------------------------------------- */
+
+/* tasks page */
+
+.tasks-left {
+    width: 25%;
+    background-color: #333;
+    min-height: 100vh;
+}
+
+.tasks-right {
+    width: 75%;
+    background-color: white;
+    min-height: 100vh;
+}
+
+
+.events-tasks-pane {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: space-evenly;
+    place-items: center;
+    gap: 20px;
+}
+
+.event-tasks-card {
+    align-self: center;
+    display: flex;
+    padding: 20px;
+    justify-content:center;
+    align-items: center;
+    width: 70%;
+    color: black;
+    border-radius: 20px;
+    box-shadow:2px 4px 10px rgb(0, 133, 93);
+    background-color: white;
+}
+
+/* .task-list-div {
+} */
+
+.task-list-div{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    min-width: 100%;
+    justify-content: space-evenly;
+    /* row-gap: 10px; */
+    gap:10px;
+}
+
+.tasks-event-id {
+    display: flex;
+    padding: 5px;
+}
+
+
+
+/* --------------------------------------------------------------------------------------------------------------- */
+/* attendees page */
+
+.attendees-left {
+    width: 25%;
+    background-color: #333;
+    min-height: 100vh;
+}
+
+.attendees-right {
+    width: 75%;
+    background-color: white;
+    min-height: 100vh;
+}
+
+
+.attendees-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* justify-content: center; */
+    place-items: center;
+    gap: 10px;
+    font-size: 1.10rem;
+}
+
+.attendees-ul {
+    min-width: 50%;
+    list-style: none;
+    background-color:gray;
+    border-radius: 10px;
+}
+
+.attendees-ul li {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+    padding: 5px;
+    background-color: lightgray;
+}
+

@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>eventapp - Manage your Events{% block title %}{% endblock title %}</title>
+
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}" />
+    </head>
+
+    <body>
+       <div class="site-name">eventapp</div>
+       <div class="navbar">
+        <ul class="navbar-ul">
+            <li class="navbar-item"><a href={{url_for('events.event_page')}}>Events</a></li>
+            <li class="navbar-item"><a href={{url_for('tasks.task_page')}}>Tasks</a></li>
+            <li class="navbar-item"><a href={{url_for('attendees.attendee_page')}}>Attendees</a></li>
+        </ul>
+       </div>
+       <main>
+        {% block content %}
+        {% endblock content %}
+       </main>
+    </body>
+</html>

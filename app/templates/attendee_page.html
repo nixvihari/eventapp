@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="attendees-left">
+        
+        <div class="sidebar-form-div"> 
+            <div class="sidebar-option">Add Attendee</div>
+            <form class="sidebar-form">
+                <label for="attendee-name-input"><b>Name:</b> </label>
+                <input type="text" name="attendee-name-input" id="attendee-name-input" required>
+                <input type="submit" id="attendee-name-input" value="Add New Attendee" formmethod="post" formaction={{url_for('attendees.add_attendee')}}>
+            </form>
+        </div>
+
+
+        <div class="sidebar-form-div">
+            <div class="sidebar-option"> Remove Attendee</div>
+            <form class="sidebar-form">
+                <label for="remove-attendee-selector"> Select Attendee to Remove:</label>
+                <select name="remove-attendee-selector" id="remove-attendee-selector" required>
+                    <option value="" disabled selected>Select your option</option>
+                {% for attendee_id, attendee_name in attendees_list %}
+                    <option value="{{attendee_id}}">{{attendee_id}} . {{attendee_name}}</option>
+                {% endfor %}
+                </select>
+                <button type="submit" name="remove-attendee" id="remove-attendee" formmethod="post" formaction={{url_for('attendees.delete_attendee')}}> Remove Attendee </button>
+            </form>
+        </div>
+
+        <div class="sidebar-form-div">
+            <div class="sidebar-option"> Assign Attendee to Task</div>
+            <form class="sidebar-form">
+                <label for="task_assignment">Select Task:</label>
+                
+                <select name="task-assignment" id="task-assignment" required>
+                    <option value="" disabled selected>Select your option</option>
+                {% for task_id, task_name in task_list %}
+                    <option value="{{task_id}}">{{task_id}} . {{task_name}}</option>
+                {% endfor %}
+                </select>
+
+                <label for="attendee-assignment">Assign Attendee:</label>
+                <select name="attendee-assignment" id="attendee-assignment" required>
+                    <option value="" disabled selected>Select your option</option>
+                {% for attendee_id, attendee_name in attendees_list %}
+                    <option value="{{attendee_id}}">{{attendee_id}} . {{attendee_name}}</option>
+                {% endfor %}
+                </select>
+                
+                <button type="submit" name="assign-task-attendee" id="assign-task-attendee" formmethod="post" formaction={{url_for('attendees.assign_attendee')}}> Assign Attendee </button>
+            </form>
+        </div>
+
+
+    </div>
+
+
+
+    <div class="attendees-right">
+        <div class="right-title">Attendees List</div>
+
+        <div class="attendees-list">
+            <ul class="attendees-ul">
+                <li class="attendees-ul-header" style="background-color: lightseagreen; border-radius: 0 10px 0 0;"><b>Attendee ID</b> <b>Attendee Name</b></li>
+                {% for attendee_id, attendee_name in attendees_list %}
+                <li><span>{{attendee_id}}</span>    <span>{{attendee_name}}</span></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+       </div> 
+    </div>
+
+
+{% endblock content %}
