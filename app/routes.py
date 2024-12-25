@@ -1,5 +1,6 @@
 from flask import Blueprint, request, g, jsonify, render_template, redirect, url_for
 from app.db import get_db
+import webbrowser
 
 TASK_LIST=[]
 
@@ -7,6 +8,9 @@ pages_bp = Blueprint('pages', __name__)
 
 
 events_bp = Blueprint('events', __name__, url_prefix="/events")
+
+
+webbrowser.open_new('http://127.0.0.1:5000/events')
 
 @events_bp.route('/', methods=['GET'])
 def event_page():
